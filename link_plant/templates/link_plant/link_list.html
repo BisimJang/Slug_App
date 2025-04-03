@@ -1,5 +1,39 @@
-<ul>
-    {% for link in object_list %}
-        <li> {{ link.text }} </li>
-    {% endfor %}
-</ul>
+{% extends 'link_plant/_base.html' %}
+
+{% block content %}
+
+    <!-- Table -->
+    <div class="mt-6">
+        <h2 class="text-xl font-semibold text-gray-800 mb-4">All My Links</h2>
+        <table class="w-full border-collapse bg-white">
+            <thead>
+                <tr class="bg-gray-200">
+                    <th class="p-2 text-left">Text</th>
+                    <th class="p-2 text-left">URL</th>
+                    <th class="p-2 text-left">Profile</th>
+                    <th class="p-2 text-left">Edit</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for link in object_list %}
+                <tr class="border-b">
+                    <td class="p-2">{{ link.text }}</td>
+                    <td class="p-2">
+                        <a href="{{ link.url }}" class="text-blue-500 underline" target="_blank">{{ link.url }}</a>
+                    </td>
+                    <td class="p-2">{{ link.profile.name }}</td>
+                    <td class="p-2">
+                        <a href="{#}" class="text-blue-500 underline">Edit</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <!-- Add New Button -->
+        <div class="mt-4">
+            <a href="#" class="w-full bg-gray-300 text-gray-700 px-4 py-2 rounded-lg block text-center">Add New +</a>
+        </div>
+    </div>
+</div>
+{% endblock %}
